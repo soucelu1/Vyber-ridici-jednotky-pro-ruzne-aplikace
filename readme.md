@@ -275,17 +275,7 @@ Jste v roli projektanta automatizace. Zákazník poptává zhotovení řízení 
 Proč se u čerpadel v čistírnách odpadních vod a jímkách striktně upřednostňuje měření hladiny pomocí proudového signálu 4–20 mA před napěťovým signálem 0–10 V a proč se do jímky nepoužívá ultrazvukový senzor, pokud v ní vzniká hustá pěna?
 
 *Vaše odpověď:*
-`SoftPLC je softwarová aplikace / řídicí systém (např. TwinCAT od Beckhoff, CODESYS Control nebo Siemens S7-1500 Software Controller), který běží na běžném průmyslovém PC (iPC) a převádí jej v plnohodnotné, vysoce výkonné PLC splňující normu IEC 61131-3.   
-
-Jak to funguje v jediném iPC (kombinace obou světů):
-
-1. Použití Real-Time Kernelu / Hypervizoru:SoftPLC nepoužívá standardní plánovač úloh Windows/Linuxu, ale využívá real-time rozšíření jádra (RT-Kernel / Hypervizor). Tento hypervizor stojí na nejnižší úrovni přímo nad hardwarovou vrstvou iPC.
-
-2. Vyhrazení procesorových jader a paměti (Core Isolation):Deterministická část (SoftPLC): Hypervizor si vyhradí konkrétní fyzická jádra CPU a část RAM výhradně pro řízení technické aplikace. Zde běží cyklická logika v reálném čase s garantovanou reakční dobou (v milisekundách až mikrosekundách) pro sběrnice typu EtherCAT či PROFINET. Tento běh je zcela deterministický a nezávislý na zbytku počítače.   Ndeterministická část (Standardní OS): Zbývající jádra CPU jsou přenechána klasickému operačnímu systému Windows nebo Linux.
-
-3. Garantovaná stabilita a nezávislost:Pokud Windows nebo Linux zamrzne, restartuje se nebo spadne do "modré obrazovky" (BSOD), real-time jádro SoftPLC pokračuje v běhu bez přerušení. Dále bezpečně řídí stroje, reaguje na snímače a v případě potřeby bezpečně odstaví linku.
-  
-Hlavní výhoda této architektury:V jediném fyzickém průmyslovém PC tak získáte nekompromisní rychlost a spolehlivost řídicího automatu (PLC) společně s možnostmi klasického počítače — tzn. bezproblémové spouštění náročných algoritmů pro AI/strojové vidění, ukládání dat do SQL/MES databází a zobrazování pokročilého uživatelského rozhraní (HMI).   `
+`... `
 
 ---
 
