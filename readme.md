@@ -199,7 +199,7 @@ Přímé ukládání znamená: Výsledky z neuronové sítě se okamžitě propi
 Co je to tzv. **SoftPLC** a jak umožňuje průmyslovému PC (iPC) kombinovat výhody operačního systému Windows/Linux a deterministického řízení reálného času v jediném fyzickém počítači?
 
 *Vaše odpověď:*
-`...`
+`SoftPLC je software (např. TwinCAT nebo CODESYS), který z obyčejného průmyslového PC (iPC) udělá plnohodnotné PLC.`
 
 ---
 
