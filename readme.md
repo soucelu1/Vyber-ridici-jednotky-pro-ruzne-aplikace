@@ -161,6 +161,7 @@ Vyplňte rozhodovací matici. Jako vzor poslouží vyplněný sloupec pro **Vzor
 | **Hlavní riziko při volbě špatné platformy** *(proč by neuspěly ostatní dvě varianty)*                | **MCU:** Nutnost vývoje vlastní desky, nízká odolnost vůči venkovnímu rušení a obtížný servis údržbou.<br>**iPC:** Zbytečně extrémní cena (> 30 tis. Kč), dlouhý start po výpadku napájení a vysoká spotřeba.             | `Kompaktní/modulární PLC / Průmyslové PC – iPC: Nerealizovatelné pro bateriové napájení (vysoká spotřeba), neekonomické kvůli vysoké pořizovací ceně při masové sérii 10 000 ks/rok.`                           | `MCU / Embedded SoC: Vysoké riziko rušení, drahý vývoj vlastního HW, náročný servis bez znalosti C++/Pythonu`                     | `MCU / Embedded SoC / Kompaktní/modulární PLC: Absolutně nedostatečný výpočetní výkon a RAM pro maticové operace neuronových sítí a zpracování 4K videa v reálném čase.`                                |
 
 **Multikriteriální posouzení**:
+ 
  **Ekonomika sériovosti a pořizovací náklady (HW & Vývoj)**
 
 Aplikace A (Termostat – 10 000 ks/rok): Při sériové výrobě 10 000 kusů ročně je klíčové minimalizovat jednotkovou cenu hardwaru. Použití MCU / Embedded SoC sice vyžaduje vysoké jednorázové náklady na vývoj tištěného spoje (PCB) a certifikaci, ale tyto náklady se rozpočítají do velké série. Jednotkový HW stojí pouze stovky Kč. Nasazení PLC nebo iPC by znamenalo neakceptovatelné náklady v řádu tisíců až desítek tisíc Kč na jeden kus.   
@@ -176,6 +177,7 @@ Aplikace C (Kontrola svarů – Jednotková/kusová výroba): Vysoká pořizovac
    Aplikace B a C: Obě zařízení jsou trvale napájena z průmyslové sítě (24 V DC / 230 V AC v rozváděči), takže spotřeba energie není omezujícím kritériem.   
 
  **Výpočetní výkon, typ dat a konektivita**
+   
    Aplikace A: Zpracovává pouze jednoduchá skalární data (teplota, vlhkost) a odesílá malé datové pakety přes ZigBee/Wi-Fi. Výkon MCU je pro tento účel plně dostačující.
 
    Aplikace B: Vyžaduje rychlé zpracování logických signálů z 28 optických snímačů a spínání 14 pneumatických válců a 3 motorů. Řídicí logika je diskrétní (I/O signály). PLC poskytuje potřebný reakční čas v řádu milisekund.
