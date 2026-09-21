@@ -199,7 +199,15 @@ Přímé ukládání znamená: Výsledky z neuronové sítě se okamžitě propi
 Co je to tzv. **SoftPLC** a jak umožňuje průmyslovému PC (iPC) kombinovat výhody operačního systému Windows/Linux a deterministického řízení reálného času v jediném fyzickém počítači?
 
 *Vaše odpověď:*
-`SoftPLC je software (např. TwinCAT nebo CODESYS), který z obyčejného průmyslového PC (iPC) udělá plnohodnotné PLC.`
+`SoftPLC je software (např. TwinCAT nebo CODESYS), který z obyčejného průmyslového PC (iPC) udělá plnohodnotné PLC.` 
+
+`Jak to funguje v jednom iPC:Rozdělení procesoru: Tzv. Real-Time Hypervizor si vyhradí část jader procesoru a paměti RAM výhradně pro řízení stroje (SoftPLC). Zbytek jader nechá pro běžný operační systém (Windows/Linux).`   
+
+`Deterministické řízení: SoftPLC část běží se 100% předností. Zaručuje okamžitou reakci v milisekundách na vstupy a výstupy, i kdyby byl operační systém pod kapotou zrovna maximálně vytížený.`   
+
+`Nezávislost při pádu: Pokud Windows/Linux zamrzne nebo spadne, SoftPLC část na vyhrazeném jádře běží dál a stroj bezpečně řídí nebo odstaví.`
+
+`Hlavní výhoda: Získáte rychlost a spolehlivost klasického PLC i výkon PC pro AI, kamery a databáze v jediné krabici.`
 
 ---
 
