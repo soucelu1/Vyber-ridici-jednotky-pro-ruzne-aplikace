@@ -312,7 +312,15 @@ Jste v roli projektanta automatizace. Zákazník poptává zhotovení řízení 
 Proč se u čerpadel v čistírnách odpadních vod a jímkách striktně upřednostňuje měření hladiny pomocí proudového signálu 4–20 mA před napěťovým signálem 0–10 V a proč se do jímky nepoužívá ultrazvukový senzor, pokud v ní vzniká hustá pěna?
 
 *Vaše odpověď:*
-`... `
+Otázku jsem si rozdělil na dvě odpovědí:
+
+`1. Nereaguje na rušení ani délku drátů: Velká čerpadla v jímkách vytváří elektřinu, která napěťový signál (0–10 V) snadno zkreslí. Proudový signál (4–20 mA) tímto rušením netrpí a funguje přesně i na dlouhé vzdálenosti.`
+
+`Pozná přetržený kabel: Nejnižší možná hodnota pro měření je 4 mA. Pokud do řídicí jednotky teče 0 mA, systém hned ví, že se přetrhl drát nebo vypadla sonda, a nahlásí poruchu. U napětí (0 V) systém nepozná, jestli je jímka prázdná, nebo je utržený kabel.`
+
+`2. Pěna tlumí zvuk: Ultrazvuk měří tak, že pošle zvukový signál a čeká, až se odrazí od vody zpět. Hustá pěna funguje jako akustická izolace – zvuk pohltí a senzor nic nenaměří.`
+
+`Měří špatnou výšku: Pokud se zvuk od pěny přece jen odrazí, senzor změří výšku pěny, ne reálnou hladinu vody. Čerpadlo by si pak myslelo, že je v jímce voda, i když tam je jen pěna. Proto se raději používá ponorná sonda až na dně, která měří tlak vody pod pěnou.`
 
 ---
 
