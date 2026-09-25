@@ -280,7 +280,7 @@ Jste v roli projektanta automatizace. Zákazník poptává zhotovení řízení 
      - Odkazy na další použité zdroje: `(https://www.google.com/search?q=https%3A%2F%2Fsupport.industry.siemens.com%2Fcs%2Fww%2Fen%2Fps%2F13683%2Fman)`
 
 3. **Technické ověření z datasheetu:**
-   - Zvládá zvolená jednotka garantovaný provoz při -20 °C? Doložte údaj z datasheetu: `Standardní jednotky S7-1200 mají provozní teplotu $-20\text{ °C až }+60\text{ °C}$ (při vodorovné instalaci). V datasheetu Siemens uvádí: "Free fall / Ambient temperature during operation: $-20\text{ °C to }+60\text{ °C}$". Jednotka tak vyhovuje zadanému rozsahu bez nutnosti speciální řady SIPLUS.`
+   - Zvládá zvolená jednotka garantovaný provoz při -20 °C? Doložte údaj z datasheetu: `Standardní jednotky S7-1200 mají provozní teplotu 20°C až 60°C (při vodorovné instalaci). V datasheetu Siemens uvádí: "Free fall / Ambient temperature during operation: 20°C to 60°C. Jednotka tak vyhovuje zadanému rozsahu bez nutnosti speciální řady SIPLUS.`
    - Jakým způsobem spínáte cívku stykače 230 V AC (reléový výstup jednotky přímo, nebo přes pomocné mezilehlé relé)? Zdůvodněte: `Řešení a zdůvodnění: Cívku spínáme přes pomocné mezilehlé relé (např. Finder / Weidmüller s paticí na DIN lištu).`
 
 `Důvod: Galvanické oddělení řídicí elektroniky PLC od silového napětí 230 V AC. Při případném zkratu nebo indukčním rázu při vypnutí cívky stykače dojde k poškození vyměnitelného pomocného relé za pár korun, nikoli k proražení výstupního tranzistoru nebo spálení kontaktu na základní desce PLC.`
