@@ -44,12 +44,12 @@ Doplňte do níže uvedené tabulky význam zkratek, základní princip a typick
 
 | Zkratka / Pojem          | Co zkratka znamená (česky / anglicky) | Základní charakteristika (architektura, kde běží program)                                            | Typický zástupce (konkrétní rodina / model) | Příklad reálného nasazení                |
 | :----------------------- | :------------------------------------ | :--------------------------------------------------------------------------------------------------- | :------------------------------------------ | :--------------------------------------- |
-| **MCU**                  |                                       | Integrovaný čip (CPU + RAM + Flash na jednom substrátu), deterministický běh bez OS nebo RTOS        | např. ESP32, PIC16LF1xxx, RP2040            |                                          |
-| **MPU**                  |                                       | Samostatný procesor vyžadující externí RAM a úložiště, zpravidla běží plnohodnotný OS (Linux)        |                                             |                                          |
-| **Embedded**             |                                       |                                                                                                      | Embedded PLC, Embedded PC                   | Bílá technika, bankomaty, regulace kotlů |
-| **PLC**                  |                                       | Průmyslový automat pro cyklické deterministické řízení procesů, vysoká odolnost, modulární/kompaktní |                                             |                                          |
-| **iPC**                  |                                       |                                                                                                      |                                             |                                          |
-| **Programovatelné relé** |                                       | Zjednodušené kompaktní PLC pro méně náročné úlohy, nahrazuje časovací relé a stykačové kombinace     |                                             |                                          |
+| **MCU**                  | Mikrokontrolér / Microcontroller Unit                                      | Integrovaný čip (CPU + RAM + Flash na jednom substrátu), deterministický běh bez OS nebo RTOS        | např. ESP32, PIC16LF1xxx, RP2040            | Chytrá domácnost (čidla, termostaty), nositelná elektronika, elektronické hračky                                         |
+| **MPU**                  | Mikroprocesorová jednotka / Microprocessor Unit                                      | Samostatný procesor vyžadující externí RAM a úložiště, zpravidla běží plnohodnotný OS (Linux)        |                                             |Raspberry Pi (Broadcom BCM2711), NXP i.MX, STM32MP1|
+| **Embedded**             |Vestavěný (vnořený) systém / Embedded System|Účelově zaměřený počítačový systém (MCU/MPU/x86) vestavěný do většího zařízení, který řídí jeho specifické funkce.| Embedded PLC, Embedded PC                   | Bílá technika, bankomaty, regulace kotlů |
+| **PLC**                  |Programovatelný logický automat / Programmable Logic Controller| Průmyslový automat pro cyklické deterministické řízení procesů, vysoká odolnost, modulární/kompaktní |Siemens LOGO! / S7-1200, Beckhoff, Schneider Modicon, Allen-Bradley|Řízení výrobních linek, robotických pracovišť, čističek odpadních vod, automatizace budov.|
+| **iPC**                  |Průmyslový počítač / Industrial PC|Odolné PC (architektura x86/ARM) pro náročné průmyslové prostředí, běží na něm plnohodnotný OS (Windows, Linux), delší bootování.|Beckhoff C60xx, Advantech UNO, Siemens Simatic IPC|Vizualizace procesů (SCADA), počítačové vidění pro kontrolu kvality, řízení celých továren.|
+| **Programovatelné relé** |Programovatelné relé / Smart Relay / Micro PLC| Zjednodušené kompaktní PLC pro méně náročné úlohy, nahrazuje časovací relé a stykačové kombinace|Siemens LOGO!, Eaton EasyE4, Schneider Zelio Logic|Řízení osvětlení, zavlažování, řízení posuvných bran, jednoduchá čerpadla.|
 
 > :key: **Vysvětlení pojmů a odborné zdroje:**
 > - **SoC (System on Chip):** Integrovaný obvod sdružující všechny klíčové elektronické obvody a komponenty celého počítače či elektronického systému na jediném křemíkovém čipu. 
@@ -69,7 +69,7 @@ Doplňte do níže uvedené tabulky význam zkratek, základní princip a typick
 Proč se u kritických aplikací v letectví (např. systém řízení letu Fly-by-Wire) nebo v jaderné energetice stále upřednostňují jednoduché deterministické mikrořadiče s několika desítkami kilobajtů paměti nebo obvody FPGA před moderními vícejádrovými gigahertzovými procesory s gigabajty RAM?
 
 *Vaše odpověď:*
-`...`
+`V kritických aplikacích se tyto obvody používají proto, že jsou 100% předvídatelné, matematicky plně otestovatelné a po výpadku se restartují během několika milisekund, zatímco u složitých GHz procesorů s operačním systémem nelze zaručit absolutní bezchybnost ani okamžitý náběh.`
 
 ---
 
