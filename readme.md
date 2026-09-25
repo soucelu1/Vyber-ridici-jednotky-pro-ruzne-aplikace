@@ -133,7 +133,7 @@ Proč se u kritických aplikací v letectví (např. systém řízení letu Fly-
 Co označuje doplňkové písmeno **K** v kódu krytí **IP69K** a v jakém průmyslovém odvětví je toto krytí bezpodmínečně vyžadováno?
 
 *Vaše odpověď:*
-`...`
+`Písmeno K označuje ochranu proti vysokotlakému a vysokoteplotnímu ostřiku vodou (čištění tlakovou vodou / wapkou, např. 100 bar při 80 °C). Bezpodmínečně se vyžaduje v potravinářském průmyslu, farmaceutickém průmyslu a u zemědělské/stavební techniky z důvodu přísných hygienických nároků a pravidelného dezinfekčního mytí.`
 
 ---
 
