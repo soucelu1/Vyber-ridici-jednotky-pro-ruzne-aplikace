@@ -342,16 +342,18 @@ Jako vedoucí inženýr jste převzal projekt po nezkušeném brigádníkovi, kt
 
 | Oblast auditu | Zjištěná vada v amatérském návrhu | Fyzikální mechanismus selhání (proč to selže) | Následek pro stroj nebo obsluhu |
 | :--- | :--- | :--- | :--- |
-| **Elektromagnetická kompatibilita (EMC)** | `...` | Napěťové špičky z indukční zátěže hydraulických ventilů způsobí restart MCU... | `...` |
-| **Mechanická a teplotní odolnost** | PLA plast a montáž na těleso lisu | `...` | `...` |
-| **Konektivita a propojení vodičů** | DuPont propojovací kabely bez aretace | `...` | `...` |
-| **Funkční bezpečnost (Safety)** | Nouzový stop řešený softwarově v čipu | `...` | `...` |
+| **Elektromagnetická kompatibilita (EMC)** | `Použití nepřímo stíněného vývojového modulu Arduino Uno a nechráněné USB nabíječky z 230V` | Napěťové špičky z indukční zátěže hydraulických ventilů způsobí restart MCU... | `Ztráta kontroly nad řízením lisu, nepředvídatelné chování (např. nekontrolovaný pohyb hydrauliky) nebo trvalé sepnutí výstupů` |
+| **Mechanická a teplotní odolnost** | PLA plast a montáž na těleso lisu | `PLA má nízkou teplotní odolnost a nízkou houževnatost. Neustálé vibrace hydraulického lisu způsobí únavu materiálu, prasknutí krabičky a její odtržení. Teplo z lisu způsobí deformaci krytu` | `Mechanické zničení řídicí elektroniky, obnažení živých částí a ztráta ochrany krytím (IP)` |
+| **Konektivita a propojení vodičů** | DuPont propojovací kabely bez aretace | `Nepájené, volně nasunuté krimpované konektory (DuPont) nemají žádnou mechanickou pojistku. Vlivem vibrací dochází k mikro-pohybům, přechodovému odporu, jiskření a nakonec k úplnému vypadnutí vodičů` | `Náhodné vypadávání signálů, výpadky řízení nebo nechtěné sepnutí/rospnutí hydraulických ventilů` |
+| **Funkční bezpečnost (Safety)** | Nouzový stop řešený softwarově v čipu | `Pokud mikrokontrolér zatuhne (zasekne se čip vlivem EMC rušení, přeteče paměť nebo zamrzne kód), přerušení (interrupt) se vůbec nevyrazí a software nezreaguje` | `Při stisku tlačítka E-Stop stroj nepřestane pracovat, což vede k přímému ohrožení života a zdraví obsluhy (riziko přimáčknutí či amputace)` |
 
 2. **Návrh profesionálního nápravného řešení:**
    - Navrhněte, jakými certifikovanými průmyslovými komponenty tento celek nahradíte při zachování minimálního rozpočtu:
-     - *Náhrada řídicí jednotky:* `...` *(např. certifikované průmyslové programovatelné relé s montáží na DIN lištu a krytím)*
-     - *Náhrada napájecího zdroje:* `...` *(např. stabilizovaný průmyslový zdroj 24 V DC na DIN lištu s ochranou proti přepětí)*
-     - *Způsob zapojení bezpečnostního okruhu (Safety):* Jak musí být podle norem zapojeno tlačítko Emergency Stop (E-Stop)? Smí být spoléháno pouze na software mikrokontroléru? Zdůvodněte: `...`
+     - *Náhrada řídicí jednotky:* `Průmyslové PLC nebo programovatelné relé s montáží na DIN lištu (např. Siemens LOGO!, Schneider Zelio Logic nebo Eaton EASY) s certifikovanou EMC odolností a krytím IP20/IP65 v rozvaděči` *(např. certifikované průmyslové programovatelné relé s montáží na DIN lištu a krytím)*
+     - *Náhrada napájecího zdroje:* `Stabilizovaný průmyslový spínaný zdroj 24 V DC na DIN lištu (např. Mean Well řada HDR/NDR nebo Siemens SITOP) s ochranou proti přepětí, přetížení a zkratu` *(např. stabilizovaný průmyslový zdroj 24 V DC na DIN lištu s ochranou proti přepětí)*
+     - *Způsob zapojení bezpečnostního okruhu (Safety):* Jak musí být podle norem zapojeno tlačítko Emergency Stop (E-Stop)? Smí být spoléháno pouze na software mikrokontroléru? Zdůvodněte: `Tlačítko Emergency Stop (červený hřib s žlutým podkladem) musí být zapojeno dvoukanálově do samostatného bezpečnostního relé (např. Pilz PNOZ, Schneider Preventa nebo Siemens SIRIUS). Bezpečnostní relé při stisku tlačítka přímo na hardwarové úrovni odpojí napájení silových stykačů hydraulických ventilů`
+
+`NESMÍ. Dle normy EN ISO 13849-1 / IEC 62061 nesmí bezpečnostní funkce záviset na nedůvěryhodném softwaru nebo standardním MCU bez bezpečnostní certifikace. Software může zamrznout, zacyklit se nebo selhat v důsledku EMC rušení. Bezpečnostní odpojení musí fungovat vždy nezávisle na řídicím procesoru.`
 
 > **Kritéria hodnocení úlohy 5 (bodování a známka):**
 > - :star: **Odborná úroveň identifikace závad (35 %):** Přesná technická terminologie (např. elektromagnetická indukce, absence odrušovacích varistorů, skelný přechod PLA plastu při 60 °C, studené spoje a vyklepání konektorů vibracemi).
@@ -372,7 +374,7 @@ Jako vedoucí inženýr jste převzal projekt po nezkušeném brigádníkovi, kt
 Proč hobby reléové moduly s optočleny určené pro Arduino v průmyslovém rozváděči často shoří nebo způsobí trvalé sepnutí zátěže (tzv. přivaření kontaktů), i když jmenovitý proud relé je 10 A a cívka stykače odebírá jen 0,5 A?
 
 *Vaše odpověď:*
-`...`
+`Hlavním důvodem přivaření kontaktů je indukční charakter zátěže cívky stykače. Udávaný proud 10 A u hobby relé platí výhradně pro čistě odporovou zátěž (AC-1); při spínání a vypínání indukční cívky však vzniká vysoká proudová špička a silné přepěťové napětí, které způsobuje elektrický oblouk. Tento oblouk roztaví nekvalitní slitinu kontaktů hobby relé a dojde k jejich trvalému přivaření k sobě. Levné plošné spoje navíc nemají dostatečné izolační vzdálenosti pro průmyslové napěťové špičky, což leads k proražení optočlenů nebo shoření desky.`
 
 ---
 
