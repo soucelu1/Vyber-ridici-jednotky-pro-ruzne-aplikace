@@ -80,42 +80,42 @@ Proč se u kritických aplikací v letectví (např. systém řízení letu Fly-
 1. **Typy pamětí v řídicích jednotkách:**
    - Doplňte porovnání pamětí z hlediska stálosti dat a rychlosti:
      - **RAM:** 
-	     - Je volatilní (energeticky závislá)? `[Ano / Ne]`
-	     - Rychlost zápisu: `...` 
-	     - K čemu se využívá v PLC/MCU: `...`
+	     - Je volatilní (energeticky závislá)? `Ano`
+	     - Rychlost zápisu: `Extrémně vysoká (v řádu nanosekund)` 
+	     - K čemu se využívá v PLC/MCU: `Ukládání mezipaměti, pracovních proměnných, zásobník (stack) a běh programu za chodu.`
      - **Flash (ROM):** 
-	     - Je volatilní? `[Ano / Ne]`
-	     - K čemu se využívá v PLC/MCU: `...`
+	     - Je volatilní? `Ne`
+	     - K čemu se využívá v PLC/MCU: `Ukládání samotného řídicího programu (firmware), konstanta a konfiguračních dat, které musí zůstat zachovány i po vypnutí napájení.`
      - **EEPROM / NVRAM:** 
-	     - Je volatilní? `[Ano / Ne]`
-	     - K čemu se využívá v PLC/MCU: `...`
+	     - Je volatilní? ` Ne`
+	     - K čemu se využívá v PLC/MCU: `Ukládání provozních parametrů, kalibračních dat, čítačů a nastavení, které se mění za provozu a nesmí se při výpadku napájení ztratit.`
    - *Otázka z praxe:* Kam se v průmyslovém PLC ukládají aktuální provozní proměnné (např. čítače vyrobených kusů nebo motohodiny), aby se při nečekaném výpadku napájení neztratily (tzv. remanentní / retain data)?
-     - Odpověď: `...`
+     - Odpověď: `Do remanentní paměti (NVRAM / EEPROM nebo do RAM zálohované superkondenzátorem / baterií).`
 
 2. **Reálný čas a determinismus (Hard vs. Soft Real-Time):**
    - Proč pro reakci na nouzové zastavení lisu (požadavek reakce do 5 ms) použijeme PLC či mikrokontrolér s RTOS, a nikoliv běžné Raspberry Pi s operačním systémem Raspberry Pi OS (standardní Linux)?
-     - Odpověď: `...`
+     - Odpověď: `Protože PLC/RTOS garantuje Hard Real-Time (striktní determinismus) – reakce proběhne vždy do 5 ms. Standardní Linux je systém Soft Real-Time bez garantované doby odezvy; plánovač úloh (scheduler) může reakci zpozdit kvůli jinému procesu na pozadí, což by u lisu mohlo způsobit havárii či zranění.`
 
 3. **Odolnost vůči vlivům prostředí a dešifrování kódu IP:**
    - Dešifrujte kód **IP68**:
-     - První číslice (6): `...`
-     - Druhá číslice (8): `...`
+     - První číslice (6): `Úplná prachotěsnost (ochrana před nebezpečným dotykem pomůckou a před vniknutím prachu)`
+     - Druhá číslice (8): `Trvalé ponoření do vody pod tlakem (za podmínek specifikovaných výrobcem)`
    - Jaké minimální krytí IP musí mít rozváděč umístěný ve venkovním nekrytém prostředí, kde na něj přímo dopadá déšť a fouká polétavý prach?
-     - Označte správnou volbu: `[ ] IP20` | `[ ] IP44` | `[ ] IP65` | `[ ] IP00`
-     - Zdůvodnění: `...`
+     - Označte správnou volbu: `[ ] IP20` | `[ ] IP44` | `[X] IP65` | `[ ] IP00`
+     - Zdůvodnění: `První číslice 6 zajišťuje úplnou prachotěsnost proti polétavému prachu a druhá číslice 5 chrání před tryskající vodou z jakéhokoli úhlu při přímém dešti.`
 
 4. **Konstrukční rozdíly kancelářského PC vs. průmyslového iPC:**
    - Vyberte a doplňte hlavní odlišnosti:
      - *Chlazení:* 
-	     - Kancelářské PC: `...` 
-	     - vs. iPC: `...`
+	     - Kancelářské PC: `Aktivní (ventilátory, které nasávají prach)` 
+	     - vs. iPC: `Pasivní (bezventilátorové / fanless, chlazení masivním hliníkovým tělem/žebrováním).`
      - *Napájecí napětí a filtrace:* 
-	     - Kancelářské PC: `...` 
-	     - vs. iPC: `...`
-     - *Odolnost proti otřesům a vibracím:* `...`
+	     - Kancelářské PC: `Standardní AC 230 V (běžný zdroj, nízká odolnost vůči výpadkům a přepětí)` 
+	     - vs. iPC: `Průmyslové DC 24 V (široký rozsah napájení, galvazniká izolace, integrovaná přepěťová filtrace)`
+     - *Odolnost proti otřesům a vibracím:* `Vysoká (použití celokovového šasi, SSD/eMMC namísto mechanických HDD a konektorů se šroubovacími pojistkami)`
      - *Způsob montáže:* 
 	     - Kancelářské PC: na stůl/pod stůl 
-	     - vs. iPC: `...`
+	     - vs. iPC: `Na DIN lištu (TS35) nebo do 19" rozvaděče (rack) / VESA držák.`
 
 > :key: **Vysvětlení pojmů a odborné zdroje:**
 > - **Determinismus (Real-Time):** Vlastnost systému, která zaručuje, že odezva na vstupní událost proběhne vždy v přesně definovaném a předvídatelném čase (deadline). V *Hard Real-Time* systémech znamená nedodržení časového limitu fatální havárii celého procesu. 
