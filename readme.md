@@ -393,11 +393,11 @@ Představte si, že management firmy rozhoduje mezi dvěma variantami řízení 
 
 | Aspekt životního cyklu | Varianta 1 (Custom Embedded MCU) | Varianta 2 (Průmyslové PLC) |
 | :--- | :--- | :--- |
-| **Dostupnost náhradních dílů za 10 let** | `...` | `...` |
-| **Servisovatelnost podnikovým elektrikářem** | `...` | `...` |
-| **Doba odstávky linky při poruše CPU** | `...` | `...` |
-| **Cena vývojových nástrojů a licencí IDE** | `...` | `...` |
-| **Závěrečné doporučení (kterou variantu vybrat a proč)** | `...` | `...` |
+| **Dostupnost náhradních dílů za 10 let** | `Nízká až nulová. Čipy nebo komponenty plošného spoje se mohou přestat vyrábět (obsolescence). Firma musí v případě výpadku osazovat vlastní desky znovu` | `Vysoká. Renomovaní výrobci (Siemens, Rockwell, Schneider) garantují dostupnost dílů i servisní podporu po dobu 10–20+ let` |
+| **Servisovatelnost podnikovým elektrikářem** | `Téměř nemožná. Běžný údržbář či elektrikář neumí ladit kód v C/C++ bez dokumentace ani opravovat vlastní plošný spoj` | `Vysoká. Standardizovaný jazyk LAD (žebříčková logika) je běžnou znalostí průmyslových údržbářů a elektrikářů` |
+| **Doba odstávky linky při poruše CPU** | `Velmi dlouhá (dny až týdny/měsíce). Nutno sehnat součástky, vyrobit desku nebo přepsat kód. Odstávka generuje obrovské finanční ztráty` | `Velmi krátká (desítky minut až hodiny). Vadný modul PLC se jednoduše vymění ze skladu kus za kus a nahraje se zálohovaný kód` |
+| **Cena vývojových nástrojů a licencí IDE** | `Nízká až žádná (CAPEX). Pro mikrokontroléry se často využívají open-source nebo levné vývojové nástroje (GCC, VS Code atd.)` | `Vyšší jednorázově/ročně. Průmyslová IDE (např. TIA Portal, Studio 5000) vyžadují placené komerční licence` |
+| **Závěrečné doporučení (kterou variantu vybrat a proč)** | `Nevhodná pro sérii 50 průmyslových linek. Extrémní riziko Vendor Lock-inu na externího vývojáře a obrovské TCO kvůli neplánovaným odstávkám` | `Jednoznačně doporučena Varianta 2. Vyšší pořizovací cena (CAPEX) se mnohonásobně vrátí v nízkých provozních nákladech (OPEX) a spolehlivosti` |
 
 > :key: **Vysvětlení pojmů a odborné zdroje:**
 > - **CAPEX (Capital Expenditure)**: Zjednodušeně jde o jednorázové kapitálové výdaje na pořízení samotného zařízení (hardware, licence).
@@ -415,4 +415,4 @@ Představte si, že management firmy rozhoduje mezi dvěma variantami řízení 
 Co znamená pojem **MTBF (Mean Time Between Failures)** v datasheetech průmyslových řídicích jednotek a jaký vliv má okolní teplota v rozváděči na tuto hodnotu (tzv. Arrheniovo pravidlo)?
 
 *Vaše odpověď:*
-`...`
+`MTBF (Mean Time Between Failures): Vyjadřuje střední dobu mezi poruchami (očekávanou provozní spolehlivost zařízení v hodinách), přičemž podle Arrheniova pravidla vede zvýšení okolní teploty v rozváděči o každých 10 °C přibližně ke zkrácení životnosti součástek (a tím i ke snížení MTBF) na polovinu v důsledku zrychlené degradacije elektroniky.`
