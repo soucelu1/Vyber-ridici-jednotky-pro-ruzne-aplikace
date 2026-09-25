@@ -262,31 +262,35 @@ Jste v roli projektanta automatizace. Zákazník poptává zhotovení řízení 
 
 | Typ signálu | Požadavek aplikace (kusy) | Popis signálů v aplikaci | Počet po započtení rezervy (+20 %) |
 | :--- | :--- | :--- | :--- |
-| **Digitální vstup (DI)** | `...` | `...` | `...` |
-| **Digitální výstup (DO) – reléový** | `...` | `...` | `...` |
-| **Digitální výstup (DO) – tranzistorový** | `...` | `...` | `...` |
-| **Analogový vstup (AI)** | `...` | `...` | `...` |
-| **Analogový výstup (AO)** | `...` | `...` | `...` |
+| **Digitální vstup (DI)** | `4` | `3× plovákový spínač (chod nasucho, zapínání, přepad), 1× termistorové relé čerpadla` | `5 (4 × 1,2 = 4,8 $\rightarrow$ zaokrouhleno nahoru)` |
+| **Digitální výstup (DO) – reléový** | `2` | `2× cívka stykače motorů hlavního a záložního čerpadla (230 V AC / 0,5 A) (Doporučeno spínat přes pomocná mezilehlá relé)` | `3 (2 × 1,2 = 2,4 $\rightarrow$ zaokrouhleno nahoru)` |
+| **Digitální výstup (DO) – tranzistorový** | `1` | `1× opticko-akustický maják (24 V DC / 0,3 A)` | `2 (1 × 1,2 = 1,2 $\rightarrow$ zaokrouhleno nahoru)` |
+| **Analogový vstup (AI)** | `1` | `1× hydrostatická sonda výšky hladiny (4–20 mA)` | `2 (1 × 1,2 = 1,2 $\rightarrow$ zaokrouhleno nahoru)` |
+| **Analogový výstup (AO)** | `1` | `1× řízení otáček frekvenčního měniče hlavního čerpadla (0–10 V)` | `2 (1 × 1,2 = 1,2 $\rightarrow$ zaokrouhleno nahoru` |
 
 2. **Výběr konkrétního hardwaru z katalogu výrobce:**
    - Navrhněte konkrétní přístroj z praxe (např. *Siemens LOGO! 24RCE + rozšiřující moduly*, *Siemens S7-1200 CPU 1212C/1214C DC/DC/RLY*, *Schneider Modicon M221*, *Eaton easyE4-UC-12RC1*, *WAGO 750*, případně průmyslový IoT kontrolér typu *UniPi Neuron*).
    - Uveďte:
-     - Výrobce a přesný model CPU: `...`
-     - Objednací kód (Part Number / Order Code): `...`
-     - Rozšiřující moduly (pokud jsou nutné pro AI 4–20 mA nebo AO 0–10 V): `...`
-     - Napájecí napětí zvolené jednotky: `...`
-     - Jak je vyřešeno odesílání dat na dispečink: `...`
-     - Odkaz na technický list (datasheet): `...`
-     - Odkazy na další použité zdroje: `...`
+     - Výrobce a přesný model CPU: `Siemens SIMATIC S7-1200 CPU 1214C DC/DC/DC`
+     - Objednací kód (Part Number / Order Code): `6ES7214-1AG40-0XB0`
+     - Rozšiřující moduly (pokud jsou nutné pro AI 4–20 mA nebo AO 0–10 V): `AI modul: SM 1231 AI 4 × 13 bit (objednací kód: 6ES7231-4HD32-0XB0) – umožňuje přímé zapojení proudové smyčky 4–20 mA pro hydrostatickou sondu.   AO modul: SB 1232 AO 1 × 12 bit (objednací kód: 6ES7232-4HA30-0XB0) – Signálová deska (Signal Board) vložená přímo do těla CPU pro napěťový výstup 0–10 V pro frekvenční měnič.`
+     - Napájecí napětí zvolené jednotky: `24 V DC`
+     - Jak je vyřešeno odesílání dat na dispečink: `CPU obsahuje integrovaný Ethernet (PROFINET) port a podporuje protokol Modbus TCP nativně v základní výbavě. Pro zálohu/bezdrátový přenos přes GSM/LTE lze doplnit komunikační modul CP 1243-1 LTE (6GK7243-1DX30-0XE0).`
+     - Odkaz na technický list (datasheet): `(https://www.google.com/search?q=https%3A%2F%2Fmall.industry.siemens.com%2Fmall%2Fcz%2Fcz%2FCatalog%2FProduct%2F6ES7214-1AG40-0XB0)`
+     - Odkazy na další použité zdroje: `(https://www.google.com/search?q=https%3A%2F%2Fsupport.industry.siemens.com%2Fcs%2Fww%2Fen%2Fps%2F13683%2Fman)`
 
 3. **Technické ověření z datasheetu:**
-   - Zvládá zvolená jednotka garantovaný provoz při -20 °C? Doložte údaj z datasheetu: `...`
-   - Jakým způsobem spínáte cívku stykače 230 V AC (reléový výstup jednotky přímo, nebo přes pomocné mezilehlé relé)? Zdůvodněte: `...`
+   - Zvládá zvolená jednotka garantovaný provoz při -20 °C? Doložte údaj z datasheetu: `Standardní jednotky S7-1200 mají provozní teplotu $-20\text{ °C až }+60\text{ °C}$ (při vodorovné instalaci). V datasheetu Siemens uvádí: "Free fall / Ambient temperature during operation: $-20\text{ °C to }+60\text{ °C}$". Jednotka tak vyhovuje zadanému rozsahu bez nutnosti speciální řady SIPLUS.`
+   - Jakým způsobem spínáte cívku stykače 230 V AC (reléový výstup jednotky přímo, nebo přes pomocné mezilehlé relé)? Zdůvodněte: `Řešení a zdůvodnění: Cívku spínáme přes pomocné mezilehlé relé (např. Finder / Weidmüller s paticí na DIN lištu).`
+
+`Důvod: Galvanické oddělení řídicí elektroniky PLC od silového napětí 230 V AC. Při případném zkratu nebo indukčním rázu při vypnutí cívky stykače dojde k poškození vyměnitelného pomocného relé za pár korun, nikoli k proražení výstupního tranzistoru nebo spálení kontaktu na základní desce PLC.`
 
 4. **Krytí rozváděče:**
    - Jaké minimální krytí **IP skříně** zvolíte? Jak v rozváděči zajistíte provoz v mrazech -20 °C a v letních vedrech?
-     - Zvolené krytí rozváděče: `...`
-     - Teplotní management skříně: `...`
+     - Zvolené krytí rozváděče: `IP65 (nebo IP66) – prachotěsná skříň odolná proti tryskající vodě, vhodná pro venkovní nekrytý terén vystavený dešti.`
+     - Teplotní management skříně: `Provoz v mrazech (-20 °C): Instalace odporového topného tělesa s termostatem (např. STEGO 50–100 W) do spodní části rozváděče pro udržení vnitřní teploty nad bodem mrazu a prevenci kondenzace vlhkosti.`
+     
+`Provoz v letních vedrech (+45 °C): Instalace ventilační jednotky s prachovým filtrem a termostatem (případně se solárním krytem / dvojitou střechou proti přímému slunečnímu záření), přičemž krytí ventilačních mřížek musí zachovávat krytí min. IP54/IP55 s použitím krycích stříšek.`
 
 > **Kritéria hodnocení úlohy 4 (bodování a známka):**
 > - :star: **Správnost I/O bilance a dimenzování (30 %):** Správný součet všech signálů, korektní rozlišení reléových vs. tranzistorových výstupů a správné započtení rezervy min. 20 %.
