@@ -22,12 +22,14 @@ Výběr řídící jednotky pro různé aplikace
 3. A z hlediska odolnosti
 4. Příklady použití v praxi (kde se používají MCU, a kde ř. j. s MPU)
 
+<!--
+1. Správné vysvětlení pojmů, architektur a zkratek z oblasti řídicích systémů. 
+2. Schopnost posoudit vliv prostředí na výběr hardwaru a dešifrovat IP kód. 
+3. Vypracování rozhodovací matice pro volbu vhodné platformy (MCU vs. PLC vs. iPC). 
+4. Návrh konkrétní konfigurace řídicí jednotky na základě zadané I/O bilance a provozních podmínek. 
+5. Kritická technická oponentura (audit) nevhodně navrženého řešení. 
+-->
 
-%% 1. Správné vysvětlení pojmů, architektur a zkratek z oblasti řídicích systémů. %%
-%% 2. Schopnost posoudit vliv prostředí na výběr hardwaru a dešifrovat IP kód. %%
-%% 3. Vypracování rozhodovací matice pro volbu vhodné platformy (MCU vs. PLC vs. iPC). %%
-%% 4. Návrh konkrétní konfigurace řídicí jednotky na základě zadané I/O bilance a provozních podmínek. %%
-%% 5. Kritická technická oponentura (audit) nevhodně navrženého řešení. %%
 
 ---
 
