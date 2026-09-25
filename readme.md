@@ -262,11 +262,11 @@ Jste v roli projektanta automatizace. Zákazník poptává zhotovení řízení 
 
 | Typ signálu | Požadavek aplikace (kusy) | Popis signálů v aplikaci | Počet po započtení rezervy (+20 %) |
 | :--- | :--- | :--- | :--- |
-| **Digitální vstup (DI)** | `4` | `3× plovákový spínač (chod nasucho, zapínání, přepad), 1× termistorové relé čerpadla` | `5 (4 × 1,2 = 4,8 $\rightarrow$ zaokrouhleno nahoru)` |
-| **Digitální výstup (DO) – reléový** | `2` | `2× cívka stykače motorů hlavního a záložního čerpadla (230 V AC / 0,5 A) (Doporučeno spínat přes pomocná mezilehlá relé)` | `3 (2 × 1,2 = 2,4 $\rightarrow$ zaokrouhleno nahoru)` |
-| **Digitální výstup (DO) – tranzistorový** | `1` | `1× opticko-akustický maják (24 V DC / 0,3 A)` | `2 (1 × 1,2 = 1,2 $\rightarrow$ zaokrouhleno nahoru)` |
-| **Analogový vstup (AI)** | `1` | `1× hydrostatická sonda výšky hladiny (4–20 mA)` | `2 (1 × 1,2 = 1,2 $\rightarrow$ zaokrouhleno nahoru)` |
-| **Analogový výstup (AO)** | `1` | `1× řízení otáček frekvenčního měniče hlavního čerpadla (0–10 V)` | `2 (1 × 1,2 = 1,2 $\rightarrow$ zaokrouhleno nahoru` |
+| **Digitální vstup (DI)** | `4` | `3× plovákový spínač (chod nasucho, zapínání, přepad), 1× termistorové relé čerpadla` | `5 (4 × 1,2 = 4,8 zaokrouhleno nahoru)` |
+| **Digitální výstup (DO) – reléový** | `2` | `2× cívka stykače motorů hlavního a záložního čerpadla (230 V AC / 0,5 A) (Doporučeno spínat přes pomocná mezilehlá relé)` | `3 (2 × 1,2 = 2,4 zaokrouhleno nahoru)` |
+| **Digitální výstup (DO) – tranzistorový** | `1` | `1× opticko-akustický maják (24 V DC / 0,3 A)` | `2 (1 × 1,2 = 1,2 zaokrouhleno nahoru)` |
+| **Analogový vstup (AI)** | `1` | `1× hydrostatická sonda výšky hladiny (4–20 mA)` | `2 (1 × 1,2 = 1,2$ zaokrouhleno nahoru)` |
+| **Analogový výstup (AO)** | `1` | `1× řízení otáček frekvenčního měniče hlavního čerpadla (0–10 V)` | `2 (1 × 1,2 = 1,2 zaokrouhleno nahoru` |
 
 2. **Výběr konkrétního hardwaru z katalogu výrobce:**
    - Navrhněte konkrétní přístroj z praxe (např. *Siemens LOGO! 24RCE + rozšiřující moduly*, *Siemens S7-1200 CPU 1212C/1214C DC/DC/RLY*, *Schneider Modicon M221*, *Eaton easyE4-UC-12RC1*, *WAGO 750*, případně průmyslový IoT kontrolér typu *UniPi Neuron*).
