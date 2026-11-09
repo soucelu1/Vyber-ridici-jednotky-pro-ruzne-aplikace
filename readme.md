@@ -276,7 +276,7 @@ Jste v roli projektanta automatizace. Zákazník poptává zhotovení řízení 
      - Rozšiřující moduly (pokud jsou nutné pro AI 4–20 mA nebo AO 0–10 V): `AI modul: SM 1231 AI 4 × 13 bit (objednací kód: 6ES7231-4HD32-0XB0) – umožňuje přímé zapojení proudové smyčky 4–20 mA pro hydrostatickou sondu.   AO modul: SB 1232 AO 1 × 12 bit (objednací kód: 6ES7232-4HA30-0XB0) – Signálová deska (Signal Board) vložená přímo do těla CPU pro napěťový výstup 0–10 V pro frekvenční měnič.`
      - Napájecí napětí zvolené jednotky: `24 V DC`
      - Jak je vyřešeno odesílání dat na dispečink: `CPU obsahuje integrovaný Ethernet (PROFINET) port a podporuje protokol Modbus TCP nativně v základní výbavě. Pro zálohu/bezdrátový přenos přes GSM/LTE lze doplnit komunikační modul CP 1243-1 LTE (6GK7243-1DX30-0XE0).`
-     - Odkaz na technický list (datasheet): `(https://www.google.com/search?q=https%3A%2F%2Fmall.industry.siemens.com%2Fmall%2Fcz%2Fcz%2FCatalog%2FProduct%2F6ES7214-1AG40-0XB0)`
+     - Odkaz na technický list (datasheet): `https://www.alldatasheet.com/html-pdf/1426084/SIEMENS/6ES7214-1AG40-0XB0/1793/5/6ES7214-1AG40-0XB0.html`
      - Odkazy na další použité zdroje: `(https://www.google.com/search?q=https%3A%2F%2Fsupport.industry.siemens.com%2Fcs%2Fww%2Fen%2Fps%2F13683%2Fman)`
 
 3. **Technické ověření z datasheetu:**
