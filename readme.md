@@ -281,7 +281,7 @@ Jste v roli projektanta automatizace. Zákazník poptává zhotovení řízení 
 
 3. **Technické ověření z datasheetu:**
    - Zvládá zvolená jednotka garantovaný provoz při -20 °C? Doložte údaj z datasheetu: `Free fall / Ambient temperature during operation: 20°C to 60°C. `
-   - Jakým způsobem spínáte cívku stykače 230 V AC (reléový výstup jednotky přímo, nebo přes pomocné mezilehlé relé)? Zdůvodněte: `Řešení a zdůvodnění: Cívku spínáme přes pomocné mezilehlé relé (např. Finder / Weidmüller s paticí na DIN lištu).`
+   - Jakým způsobem spínáte cívku stykače 230 V AC (reléový výstup jednotky přímo, nebo přes pomocné mezilehlé relé)? Zdůvodněte: `Cívku spínáme přes pomocné mezilehlé relé (např. Finder / Weidmüller s paticí na DIN lištu).`
 
 `Důvod: Galvanické oddělení řídicí elektroniky PLC od silového napětí 230 V AC. Při případném zkratu nebo indukčním rázu při vypnutí cívky stykače dojde k poškození vyměnitelného pomocného relé za pár korun, nikoli k proražení výstupního tranzistoru nebo spálení kontaktu na základní desce PLC.`
 
